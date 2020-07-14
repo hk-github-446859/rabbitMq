@@ -1,6 +1,8 @@
 package com.myProject.mq.controller;
 
 import com.myProject.mq.service.RabbitMqService;
+import com.myProject.mq.service.recv.Recv;
+import com.myProject.mq.service.send.Send;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,12 @@ public class RabbitMqController {
     @Autowired
     private RabbitMqService mqService;
 
+
+    @Autowired
+    private Send send;
+    @Autowired
+    private Recv recv;
+
     @GetMapping("/test")
     public List<Map<String, Object>> test() {
 
@@ -28,5 +36,12 @@ public class RabbitMqController {
         List<Map<String, Object>> test = mqService.test();
         return test;
     }
+
+
+    @GetMapping("/hello")
+    public void hello() {
+        send.send();
+    }
+
 
 }
