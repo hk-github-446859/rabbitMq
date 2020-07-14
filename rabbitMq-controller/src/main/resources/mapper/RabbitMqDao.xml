@@ -3,7 +3,7 @@
 <mapper namespace="com.myProject.mq.dao.RabbitMqDao">
 
 
-    <select id="test" resultType="map">
+    <select id="test" resultType="java.util.Map">
         select
          s.dept_id as deptId,
          s.dept_name as deptName
