@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @MapperScan("com.myProject.**.dao")
 //@EnableMybatisRepositories(mapperLocations = {"classpath*:mapper/*.xml"})
 //@ImportResource({"classpath*:mapper/*.xml"})
-@PropertySource(value = {"classpath:config/${spring.profiles.active}/database.properties"}, ignoreResourceNotFound = true)
+@PropertySource(value = {"classpath:config/${spring.profiles.active}/database.properties","classpath:config/${spring.profiles.active}/global.properties"}, ignoreResourceNotFound = true)
 public class RabbitMqApplication {
     private static volatile boolean running = true;
 
