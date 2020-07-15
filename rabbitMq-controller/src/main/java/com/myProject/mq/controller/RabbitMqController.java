@@ -33,6 +33,9 @@ public class RabbitMqController {
     @Autowired
     private DirectSend directSend;
 
+    @Autowired
+    private CallBackSend callbackSend;
+
 
     @GetMapping("/test")
     public List<Map<String, Object>> test() {
@@ -49,13 +52,13 @@ public class RabbitMqController {
 
     @GetMapping("/hello")
     public void hello() {
-        send.send("单个消息" );
+        send.send("单个消息");
     }
 
     @GetMapping("/oneToMany")
     public void oneToMany() {
         for (int i = 0; i < 10; i++) {
-            send.send("多个消息"+i);
+            send.send("多个消息" + i);
         }
 
     }
@@ -65,9 +68,9 @@ public class RabbitMqController {
      */
     @GetMapping("/manyToMany")
     public void manyToMany() {
-        for(int i=0;i<10;i++){
-            send.send("hellomsg:"+i);
-            send2.send("hellomsg:"+i);
+        for (int i = 0; i < 10; i++) {
+            send.send("hellomsg:" + i);
+            send2.send("hellomsg:" + i);
         }
 
     }
@@ -85,5 +88,12 @@ public class RabbitMqController {
     @GetMapping("/directSend")
     public void directSend() {
         directSend.send();
+    }
+
+    @GetMapping("/callback")
+    public void callback() {
+        for (int i = 0; i < 10; i++) {
+            callbackSend.send("哈哈哈" + i);
+        }
     }
 }
