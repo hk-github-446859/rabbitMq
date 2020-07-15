@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class Send {
+public class Send2 {
 
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
     public void send(String s) {
         String sendMsg = s + new Date();
-        System.out.println("Sender1 : " + sendMsg);
+        System.out.println("Sender2 : " + sendMsg);
         this.rabbitTemplate.convertAndSend("helloQueue", sendMsg);
     }
 
